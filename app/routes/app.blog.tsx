@@ -1,6 +1,8 @@
 import { useLoaderData, useActionData, Form } from "react-router";
 import { ImageUpload } from "../src/components/image/ImageUpload";
+import { BackHome } from "../src/components/backhome";
 import { seoLoader } from "app/src/hooks/seo/seoLoader";
+import type { BlogNodeType } from "app/type/seo/seoType";
 export { loader, action } from "../adapters/controllers/routes/blog.route";
 
 export default function Index() {
@@ -15,9 +17,11 @@ export default function Index() {
   } = seoLoader();
 
   return (
-    <s-page 
-      heading="Smart Tools - Blog SEO"
-    >
+    <>
+      <BackHome />
+      <s-page 
+        heading="General Tools"
+      >
       <Form 
         method="post"
         encType="multipart/form-data" 
@@ -210,7 +214,7 @@ export default function Index() {
                       name="blog_id"
                     >
                       {loader.blogs.map((
-                        blog: any
+                        blog: BlogNodeType
                       ) => (
                         <s-option 
                           key={blog.id} 
@@ -246,5 +250,6 @@ export default function Index() {
         </s-grid>
       </Form>
     </s-page>
+    </>
   );
 }

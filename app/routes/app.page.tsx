@@ -1,5 +1,6 @@
 import { Form, useActionData } from "react-router";
 import { seoLoader } from "app/src/hooks/seo/seoLoader";
+import { BackHome } from "app/src/components/backhome";
 export { loader, action } from "../adapters/controllers/routes/page.route";
 
 export default function Index() {
@@ -13,8 +14,10 @@ export default function Index() {
   } = seoLoader();
 
   return (
+    <>
+    <BackHome/>
     <s-page 
-      heading="Smart Tools - Page SEO"
+      heading="General Tools"
     >
       <Form 
         method="post" 
@@ -187,5 +190,6 @@ export default function Index() {
         </s-grid>
       </Form>
     </s-page>
+  </>
   );
 }

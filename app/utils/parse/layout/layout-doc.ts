@@ -57,13 +57,13 @@ const fixHeadersRegex = (h: string) => {
 
 const fixImgsRegex = (h: string) =>
   h.replace(/<img\b([^>]*?)(\/?)\s*>/gi, (
-    attrs, slash
+    match, attrs, slash
   ) => {
 
     const hasWidth = /\swidth\s*=/i.test(attrs);
     const hasStyle = /\sstyle\s*=/i.test(attrs);
     
-    let result = `<img${attrs}`;
+    let result = attrs;
     
     if (!hasWidth) {
       result += ` width="500"`;
@@ -76,9 +76,7 @@ const fixImgsRegex = (h: string) =>
         `style="$1 display:block;margin:30px auto;"`);
     }
     
-    result += ` ${slash}>`;
-
-    return result;
+    return `<img${result}${slash ? ' /' : ''}>`;
   });
 
 const finish = (h: string) =>

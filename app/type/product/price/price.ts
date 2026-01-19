@@ -1,7 +1,8 @@
+import { adminType } from "app/type/general";
 import { MetafieldType, UpdateMetafieldsResultType } from "../metafield/metafield";
 
 export type ProcessPriceUpdateType = {
-  admin: any;
+  admin: adminType;
   productInfo: { productId: string; variantId: string | null };
   sku: string;
   priceUpdate?: MetafieldType;
@@ -9,7 +10,7 @@ export type ProcessPriceUpdateType = {
 };
 
 export type UpdateVariantPriceType = {
-  admin: any;
+  admin: adminType;
   productId: string;
   variantId: string;
   price: string;

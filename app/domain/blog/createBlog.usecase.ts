@@ -1,12 +1,12 @@
 import { CREATE_BLOG_MUTATION } from "../../infrastructure/mutation/mutation";
-import { createBlogOrPageType } from "../../type/seo/seoType";
+import { createBlogOrPageType, ArticleInputType, CreateArticleResponseType, ArticleMetafieldEdgeType } from "../../type/seo/seoType";
 
 export async function createBlogUseCase({
   formData, 
   admin, 
   shopName, 
   session
-}: createBlogOrPageType): Promise<any> {
+}: createBlogOrPageType): Promise<CreateArticleResponseType> {
   
   const shopUrl = session.shop;
   const blogId = String(formData.get("blog_id"));
@@ -20,7 +20,7 @@ export async function createBlogUseCase({
   const banner = formData.get("image_banner");
   const banner_url = typeof banner === "string" ? banner : null;
   
-  const articleInput: any = {
+  const articleInput: ArticleInputType = {
     blogId,
     title,
     body,
@@ -42,9 +42,9 @@ export async function createBlogUseCase({
         type: "multi_line_text_field",
       },
     ],
-  };
-  articleInput.image = { 
-    url: banner_url
+    image: { 
+      url: banner_url
+    }
   };
  
   const response = await admin.graphql(
@@ -70,8 +70,8 @@ export async function createBlogUseCase({
 
   const metafieldsRaw = article.metafields?.edges || [];
   const metafields = metafieldsRaw.reduce((
-    acc: any, 
-    edge: any
+    acc: Record<string, string>, 
+    edge: ArticleMetafieldEdgeType
     ) => { 
       acc[edge.node.key] = 
         edge.node.value; 

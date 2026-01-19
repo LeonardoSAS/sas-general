@@ -1,4 +1,5 @@
 import { AdminApiContext } from "@shopify/shopify-app-react-router/server";
+import { adminType } from "../general";
 
 export type processImageType = {
   url: string;
@@ -14,12 +15,12 @@ export type UploadImagesResultItemType = {
 
 export type UploadImagesInputType = {
   imageUrls: string[];
-  admin: any;
+  admin: adminType;
   shopName: string;
 };
 
 export type uploadWebpToShopifyType = {
-  admin: any;
+  admin: adminType;
   buffer: Buffer;
   filename: string;
 };

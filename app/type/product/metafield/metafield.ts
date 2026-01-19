@@ -1,4 +1,4 @@
-import { ProcessingErrorType } from "../../general";
+import { adminType, ProcessingErrorType } from "../../general";
 import { AdminApiContext } from "@shopify/shopify-app-react-router/server";
 
 export interface MetafieldType {
@@ -73,7 +73,7 @@ export const validTypes: MetafieldType['type'][] = [
 ];
 
 export type ProcessVariantMetafieldsType = {
-  admin: any;
+  admin: adminType;
   productInfo: { variantId: string | null };
   sku: string;
   variantMetafields: MetafieldType[];
@@ -81,7 +81,7 @@ export type ProcessVariantMetafieldsType = {
 };
 
 export type ProcessProductMetafieldsType = {
-  admin: any;
+  admin: adminType;
   productInfo: { productId: string };
   sku: string;
   productMetafields: MetafieldType[];

@@ -1,7 +1,9 @@
 import { GET_BLOGS_NAME_QUERY } from "../../../../infrastructure/query/query";
+import { adminType } from "app/type/general";
+import { BlogNodeType } from "app/type/seo/seoType";
 
 export async function getShopifyBlogs(
-  admin: any
+  admin: adminType
 ) {
   
   const response = await admin.graphql(
@@ -11,7 +13,7 @@ export async function getShopifyBlogs(
     data: {
       blogs: {
         edges: {
-          node: any 
+          node: BlogNodeType 
         }[]
       }
     };

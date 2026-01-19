@@ -1,5 +1,5 @@
 import { AdminApiContext } from "@shopify/shopify-app-react-router/server";
-import { ProcessingErrorType } from "../general";
+import { adminType, ProcessingErrorType } from "../general";
 import { MetafieldDataType, MetafieldType } from "./metafield/metafield";
 
 export type productSkuType = {
@@ -43,7 +43,7 @@ export type ProcessCellResultType = {
 };
 
 export type ProductControllerType = {
-  admin: any;
+  admin: adminType;
   request: Request;
 };
 
@@ -52,7 +52,6 @@ export type ActionResponseType = {
   message: string;
   results?: any[];
 };
-
 
 export interface CSVFileUploaderPropsType {
   onSubmit: (file: File) => void;

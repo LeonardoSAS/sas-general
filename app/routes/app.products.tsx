@@ -1,7 +1,8 @@
 import { CSVFileUploader } from "app/src/components/product/CSVFileUploader";
 import { ResultsDisplay } from "app/src/components/product/ResultsDisplay";
 import { ModalMainGuide } from "app/src/components/product/ModalMainGuide";
-export { loader, action } from "../adapters/controllers/routes/product.route";
+export { action } from "../adapters/controllers/routes/product.route";
+import { BackHome } from "app/src/components/backhome";
 import { useProductsLogic } from "app/src/hooks/product/csvSubmit";
 
 export default function Index() {
@@ -12,8 +13,10 @@ export default function Index() {
   } = useProductsLogic();
 
   return (
+    <>
+    <BackHome />
     <s-page 
-      heading="Smart Tools - Products"
+      heading="General Tools"
     >
       <s-box
         padding="base"
@@ -54,5 +57,6 @@ export default function Index() {
       </s-box>
       <ModalMainGuide />  
     </s-page>
+    </>
   );
 }

@@ -7,7 +7,9 @@ import { createPageController } from "../page.controller";
 export async function loader({ request }: LoaderFunctionArgs) {
 
     const { admin } = await authenticate.admin(request);
-    const title = await getThemeTitleUseCase(admin); 
+    const [title] = await Promise.all([
+      getThemeTitleUseCase(admin)
+    ]); 
     return title
 }
   export const action = async ({ request }: ActionFunctionArgs) => {
