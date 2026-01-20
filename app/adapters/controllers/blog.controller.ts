@@ -2,14 +2,15 @@ import { createContent } from "../../application/content/createContent.usecase";
 import { createBlogUseCase } from "app/domain/blog/createBlog.usecase";
 import { processBannerImage } from "app/application/images/processBannerImage.usecase";
 import { findBlog } from "app/application/blog/findBlog.usecase";
-import { seoControllerType } from "app/type/seo/seoType";
+import { CreateBlogControllerType } from "app/type/seo/seoType";
 
 export async function createBlogController({
   formData, 
   admin, 
   session, 
-  shopName 
-}: seoControllerType) {
+  shopName,
+  cachedBlogs
+}: CreateBlogControllerType) {
 
   const imageUrl = await processBannerImage({
     admin, 
@@ -22,7 +23,8 @@ export async function createBlogController({
 
   const blogInfo = await findBlog({
     admin, 
-    formData
+    formData,
+    cachedBlogs
   });
   
   formData.set("blog_id", blogInfo.id);

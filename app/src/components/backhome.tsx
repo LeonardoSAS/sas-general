@@ -12,7 +12,7 @@
         fontFamily: "Arial, sans-serif"
       }}>
         <s-button 
-          href="/app"
+          href="/"
           variant="tertiary"
           icon="arrow-left"
           tone="neutral"

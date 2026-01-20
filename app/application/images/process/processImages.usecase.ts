@@ -9,18 +9,15 @@ export async function processImages({
   shopName
 }: UploadImagesInputType): Promise<UploadImagesResultItemType[]> {
   
-  const results: UploadImagesResultItemType[] = [];
-  
-  let counter = 1;
-
-  for (const oldUrl of imageUrls) {
+  const uploadPromises = imageUrls.map(
+    async (oldUrl, index) => 
+  {
     try {
-
+      
       const buffer = await fetchImage(oldUrl);
       const filename = `${datetimeShop({
         shopName, 
-        sequenceNumber: 
-        counter
+        sequenceNumber: index + 1
       })}.webp`;
       
       const finalUrl = await uploadWebpToShopify({
@@ -29,21 +26,31 @@ export async function processImages({
         filename,
       });
 
-      results.push({
+      return {
         oldUrl,
         newUrl: finalUrl,
-      });
-      counter++;
+      };
     } 
     catch (err: any) {
       console.error(`Fail Image: ${oldUrl}`, err.message || err);
       
-      results.push({
+      return {
         oldUrl,
         newUrl: undefined,
-      });
+      };
     }
-  }
-
-  return results;
+  });
+  
+  const results = await Promise.allSettled(
+    uploadPromises
+  );
+  
+  return results.map((result) => 
+    result.status === "fulfilled" 
+      ? result.value 
+      : { 
+        oldUrl: "unknown", 
+        newUrl: undefined
+      }
+  );
 }

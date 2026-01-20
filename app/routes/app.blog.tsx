@@ -2,12 +2,13 @@ import { useLoaderData, useActionData, Form } from "react-router";
 import { ImageUpload } from "../src/components/image/ImageUpload";
 import { BackHome } from "../src/components/backhome";
 import { seoLoader } from "app/src/hooks/seo/seoLoader";
-import type { BlogNodeType } from "app/type/seo/seoType";
+import type { BlogLoaderType } from "app/type/seo/seoType";
 export { loader, action } from "../adapters/controllers/routes/blog.route";
 
 export default function Index() {
   const loader = useLoaderData();
   const data = useActionData();
+
   const { 
     isSubmitting, 
     errors, 
@@ -53,7 +54,7 @@ export default function Index() {
                 </s-button>
                 {data.status === "publish" && (data.blog?.handle || data.blogHandle) && (
                   <s-button href= {
-                    `https://${data.shopUrl}/blogs/${data.blogHandle || data.blog?.handle}`
+                    `https://${data.shopUrl}/blogs/${data.blogHandle}/${data.blogName}`
                   }
                     target="_blank"
                   >
@@ -214,7 +215,7 @@ export default function Index() {
                       name="blog_id"
                     >
                       {loader.blogs.map((
-                        blog: BlogNodeType
+                        blog: BlogLoaderType
                       ) => (
                         <s-option 
                           key={blog.id} 

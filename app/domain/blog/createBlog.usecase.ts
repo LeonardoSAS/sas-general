@@ -83,6 +83,7 @@ export async function createBlogUseCase({
     blog: { ...article, metafields },
     idBlog: articleId,
     blogHandle,
+    blogName: article.handle,
     status,
     shopUrl,
     shopName,

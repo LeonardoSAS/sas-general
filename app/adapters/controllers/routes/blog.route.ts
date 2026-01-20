@@ -29,11 +29,14 @@ export async function action ({ request }: ActionFunctionArgs){
   const shopName = extractShopName(session.shop);
   const formData = await request.formData();
   
+  const blogs = await getShopifyBlogs(admin);
+  
   const result = await createBlogController({
     formData, 
     admin, 
     session, 
-    shopName
+    shopName,
+    cachedBlogs: blogs
   });
 
   return result;

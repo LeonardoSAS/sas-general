@@ -1,8 +1,8 @@
-import { urls } from "app/const/general";
-
 export function extractImageUrlsFromMailchimp(
   html: string
 ): string[] {
+
+  const urls = new Set<string>();
 
   const isValidExternalImage = (
     url: string

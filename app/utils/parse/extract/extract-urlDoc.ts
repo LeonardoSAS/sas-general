@@ -1,9 +1,8 @@
-import { images } from "app/const/general.js";
-
 export function extractImageUrlsFromDoc(
   html: string
 ): string[] {
 
+  const images: string[] = [];
   const regex = /<img[^>]+src=["']([^"']+)["']/g;
 
   let match;

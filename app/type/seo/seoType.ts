@@ -23,6 +23,10 @@ export type createBlogOrPageType = {
   session: Session;
 };
 
+export interface CreateBlogControllerType extends seoControllerType {
+  cachedBlogs?: BlogLoaderType[];
+}
+
 export type fetchHtmlAndUrlType = {
   url: string;
   type: string;
@@ -38,22 +42,17 @@ export type layoutCleanerType = {
     type: "page" | "blog";
 };
 
-export interface BlogNodeType {
+export interface BlogLoaderType {
   id: string;
   handle: string;
   title: string;
-}
-
-export interface ArticleBlogNodeType {
-  author?: {
-    name: string;
-  };
 }
 
 export interface CreateArticleResponseType {
   blog: ArticleGraphQlType & { metafields: Record<string, string> };
   idBlog: string;
   blogHandle: string;
+  blogName: string;
   status: string;
   shopUrl: string;
   shopName: string;
@@ -138,4 +137,3 @@ export interface CreatePageResponseType {
 }
 
 export type FieldNameType = keyof ErrorsType;
-
