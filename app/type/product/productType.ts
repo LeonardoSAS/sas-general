@@ -1,6 +1,6 @@
 import { AdminApiContext } from "@shopify/shopify-app-react-router/server";
 import { adminType, ProcessingErrorType } from "../general";
-import { MetafieldDataType, MetafieldType } from "./metafield/metafield";
+import { MetafieldDataType, MetafieldType, UpdateMetafieldsResultType } from "./metafield/metafield";
 
 export type productSkuType = {
   sku: string;
@@ -11,6 +11,13 @@ export interface ProductInfoType {
   productId: string;
   variantId: string | null;
 }
+
+export type ProductVariantEdgeType = {
+  node: {
+    sku: string;
+    id: string;
+  };
+};
 
 export interface CSVProcessingResultType {
   data: MetafieldDataType[];
@@ -50,7 +57,7 @@ export type ProductControllerType = {
 export type ActionResponseType = {
   success: boolean;
   message: string;
-  results?: any[];
+  results?: UpdateMetafieldsResultType[];
 };
 
 export interface CSVFileUploaderPropsType {
@@ -62,7 +69,7 @@ export interface ResultsDisplayPropsType {
   data: {
     success: boolean;
     message: string;
-    results?: any[];
+    results?: UpdateMetafieldsResultType[];
   } | null;
 }
 

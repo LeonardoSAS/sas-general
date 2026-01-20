@@ -1,4 +1,4 @@
-import { productSkuType, ProductInfoType } from "app/type/product/productType";
+import { productSkuType, ProductInfoType, ProductVariantEdgeType } from "app/type/product/productType";
 import { GET_PRODUCT_BY_SKU_QUERY } from "app/infrastructure/query/query";
 
 export async function getProductInfoBySku({
@@ -25,7 +25,7 @@ export async function getProductInfoBySku({
 
     const variantId = product.variants?.
       edges?.find((
-        edge: any
+        edge: ProductVariantEdgeType
       ) => edge.node.sku === sku)?.
         node?.id ?? null;
 

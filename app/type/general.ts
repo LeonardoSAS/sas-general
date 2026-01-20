@@ -17,6 +17,11 @@ export interface ProcessingErrorType {
   line: number;
 }
 
+export interface ShopifyUserErrorType {
+  field?: string[];
+  message: string;
+}
+
 export type datetimeType = {
   shopName: string;
   sequenceNumber: number;

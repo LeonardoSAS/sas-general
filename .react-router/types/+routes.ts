@@ -63,6 +63,10 @@ type RouteFiles = {
     id: "routes/auth.$";
     page: "/auth/*";
   };
+  "routes/_index.tsx": {
+    id: "routes/_index";
+    page: "/";
+  };
   "routes/app.tsx": {
     id: "routes/app";
     page: "/app" | "/app/products" | "/app/blog" | "/app/page";
@@ -70,10 +74,6 @@ type RouteFiles = {
   "routes/app.products.tsx": {
     id: "routes/app.products";
     page: "/app/products";
-  };
-  "routes/app._index.tsx": {
-    id: "routes/app._index";
-    page: "/app";
   };
   "routes/app.blog.tsx": {
     id: "routes/app.blog";
@@ -91,9 +91,9 @@ type RouteModules = {
   "routes/webhooks.app.uninstalled": typeof import("./app/routes/webhooks.app.uninstalled.tsx");
   "routes/auth.login": typeof import("./app/routes/auth.login/route.tsx");
   "routes/auth.$": typeof import("./app/routes/auth.$.tsx");
+  "routes/_index": typeof import("./app/routes/_index.tsx");
   "routes/app": typeof import("./app/routes/app.tsx");
   "routes/app.products": typeof import("./app/routes/app.products.tsx");
-  "routes/app._index": typeof import("./app/routes/app._index.tsx");
   "routes/app.blog": typeof import("./app/routes/app.blog.tsx");
   "routes/app.page": typeof import("./app/routes/app.page.tsx");
 };

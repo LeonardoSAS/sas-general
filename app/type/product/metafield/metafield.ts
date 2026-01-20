@@ -1,4 +1,4 @@
-import { adminType, ProcessingErrorType } from "../../general";
+import { adminType, ProcessingErrorType, ShopifyUserErrorType } from "../../general";
 import { AdminApiContext } from "@shopify/shopify-app-react-router/server";
 
 export interface MetafieldType {
@@ -22,12 +22,26 @@ export interface MetafieldDataType {
   };
 }
 
+export interface ShopifyProductNodeType {
+  id: string;
+  title: string;
+  [key: string]: unknown;
+}
+
+export interface ShopifyMetafieldType {
+  id: string;
+  namespace: string;
+  key: string;
+  value: string;
+  [key: string]: unknown;
+}
+
 export interface UpdateMetafieldsResultType {
   sku: string;
   success: boolean;
-  errors?: any[];
+  errors?: ShopifyUserErrorType[];
   error?: string;
-  product?: any;
+  product?: ShopifyProductNodeType | ShopifyMetafieldType[];
   updates?: {
     product?: Array<{
       namespace: string;

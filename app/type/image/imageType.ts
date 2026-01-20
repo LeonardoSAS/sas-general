@@ -1,6 +1,13 @@
 import { AdminApiContext } from "@shopify/shopify-app-react-router/server";
 import { adminType } from "../general";
 
+export type ImageBannerEventType = {
+  currentTarget?: { files?: FileList };
+  target?: { files?: FileList };
+  dataTransfer?: DataTransfer;
+  detail?: { files?: FileList };
+};
+
 export type processImageType = {
   url: string;
   admin: AdminApiContext;
@@ -31,4 +38,9 @@ export type replaceImageUrlsType = {
     oldUrl: string;
     newUrl?: string;
   }[];
+};
+
+export type StagedUploadParameterType = {
+  name: string;
+  value: string;
 };

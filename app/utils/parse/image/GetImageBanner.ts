@@ -1,10 +1,12 @@
+import { ImageBannerEventType } from "app/type/image/imageType";
+
 export function handleImageBanner({
   event,
   fileInputRef,
   setImageOk,
   setPreviewSrc, 
 }: {
-  event: any;
+  event: ImageBannerEventType;
   fileInputRef: React.RefObject<HTMLInputElement>;
   setImageOk: (v: boolean) => void;
   setPreviewSrc: (v: string | null) => void;

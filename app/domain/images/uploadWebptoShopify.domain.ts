@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import { GET_IMAGE_CDN_QUERY } from "../../infrastructure/query/query";
 import { STAGED_UPLOAD_MUTATION, FILE_CREATE_MUTATION } from "../../infrastructure/mutation/mutation";
-import { uploadWebpToShopifyType } from "../../type/image/imageType";
+import { uploadWebpToShopifyType, StagedUploadParameterType } from "../../type/image/imageType";
 
 export async function uploadWebpToShopify({
     admin, 
@@ -41,7 +41,7 @@ export async function uploadWebpToShopify({
   }
   const form = new FormData();
 
-  (staged.parameters || []).forEach((p: any) =>
+  (staged.parameters || []).forEach((p: StagedUploadParameterType) =>
     form.append(p.name, p.value));
 
   form.append(

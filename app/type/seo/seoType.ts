@@ -1,6 +1,6 @@
 import { AdminApiContext } from "@shopify/shopify-app-react-router/server";
 import type { Session } from "@shopify/shopify-api";
-import { ErrorsType } from "../general";
+import { ErrorsType, ShopifyUserErrorType } from "../general";
 
 export type createContentType = {
   formData: FormData;
@@ -51,13 +51,13 @@ export interface ArticleBlogNodeType {
 }
 
 export interface CreateArticleResponseType {
-  blog: Record<string, any>;
+  blog: ArticleGraphQlType & { metafields: Record<string, string> };
   idBlog: string;
   blogHandle: string;
   status: string;
   shopUrl: string;
   shopName: string;
-  userErrors: Array<{ field: string; message: string }> | null;
+  userErrors: ShopifyUserErrorType[] | null;
 }
 
 export interface metafieldSeoType {
@@ -88,6 +88,22 @@ export interface ArticleMetafieldEdgeType {
   };
 }
 
+export interface ArticleGraphQlType {
+  id: string;
+  title: string;
+  body: string;
+  author?: {
+    name: string;
+  };
+  image?: {
+    url: string | null;
+  };
+  metafields?: {
+    edges: ArticleMetafieldEdgeType[];
+  };
+  [key: string]: unknown;
+}
+
 export interface PageInputType {
   title: string;
   body: string;
@@ -102,16 +118,23 @@ export interface PageMetafieldEdgeType {
   };
 }
 
+export interface PageGraphQlType {
+  id: string;
+  title: string;
+  body: string;
+  metafields?: {
+    edges: PageMetafieldEdgeType[];
+  };
+  [key: string]: unknown;
+}
+
 export interface CreatePageResponseType {
-  page: Record<string, any>;
+  page: PageGraphQlType & { metafields: Record<string, string> };
   idPage: string;
   status: string;
   shopUrl: string;
   shopName: string;
-  userErrors: Array<{ 
-    field: string; 
-    message: string 
-  }> | null;
+  userErrors: ShopifyUserErrorType[] | null;
 }
 
 export type FieldNameType = keyof ErrorsType;
