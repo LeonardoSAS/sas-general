@@ -1,6 +1,6 @@
 import { MetafieldDataType } from "app/type/product/metafield/metafield";
 import { ProcessingErrorType } from "app/type/general";
-import { optional } from "app/const/general";
+import { optional } from "app/type/const/general";
 import { splitLines, parseHeaders, lineFormat } from "app/utils/parse/layout/layout-products";
 import { metafieldsFromLine } from "./csv/metafieldsFromLine";
 
@@ -18,7 +18,6 @@ export function processCSV(
   let linesWithErrors = 0;
 
   for (let i = 1; i < lines.length; i++) {
-    
     const values = lineFormat(lines[i]);
     const { 
       metafields, 

@@ -5,9 +5,11 @@ export function convertToHtmlExportUrl(
   if (!docUrl){
     return "";
   }
+
   const match = docUrl.match(
     /\/d\/([a-zA-Z0-9_-]+)/
   );
+  
   if (!match){
     return "";
   }

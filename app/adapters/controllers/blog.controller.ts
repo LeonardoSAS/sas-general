@@ -2,7 +2,7 @@ import { createContent } from "../../application/content/createContent.usecase";
 import { createBlogUseCase } from "app/domain/blog/createBlog.usecase";
 import { processBannerImage } from "app/application/images/processBannerImage.usecase";
 import { findBlog } from "app/application/blog/findBlog.usecase";
-import { CreateBlogControllerType } from "app/type/seo/seoType";
+import { CreateBlogControllerType } from "app/type/interface/seo/interface";
 
 export async function createBlogController({
   formData, 

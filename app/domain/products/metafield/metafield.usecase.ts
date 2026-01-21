@@ -3,6 +3,7 @@ import { MetafieldType } from "app/type/product/metafield/metafield";
 export function metafieldData(
   metafields: MetafieldType[]
 ) {
+  
   const productMetafields = 
     metafields.filter((mf) =>
       mf.target === "product"

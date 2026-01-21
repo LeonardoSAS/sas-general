@@ -35,7 +35,8 @@ export function handleImageBanner({
         console.warn("DataTransfer fallback:", err);
       }
     }
-  } else {
+  } 
+  else {
     setImageOk(false);
     setPreviewSrc(null);
     

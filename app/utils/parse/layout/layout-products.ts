@@ -29,17 +29,14 @@ export function lineFormat(
   let inQuotes = false;
 
   for (const char of line) {
-    // Toggle quote state
     if (char === '"') {
       inQuotes = !inQuotes;
       continue;
     }
 
-    // Track bracket depth only when not in quotes
     if (char === "[" && !inQuotes) depth++;
     if (char === "]" && !inQuotes && depth > 0) depth--;
 
-    // Check if this is a field separator (comma outside quotes and brackets)
     const isSeparator = char === "," && depth === 0 && !inQuotes;
     
     if (isSeparator) {
@@ -56,7 +53,6 @@ export function lineFormat(
   }
   
   return values.map(value => {
-    // Remove spaces after commas inside brackets
     return value.replace(/,\s+/g, ",");
   });
 }

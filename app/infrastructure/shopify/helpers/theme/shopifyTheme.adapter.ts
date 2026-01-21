@@ -15,6 +15,7 @@ export async function fetchThemeContent(
   if (!themeId){
     throw new Error("No MAIN theme found");
   }
+  
   const fileRes = await admin.graphql(
     GET_THEME_FILE_QUERY, {
       variables: { id: themeId },

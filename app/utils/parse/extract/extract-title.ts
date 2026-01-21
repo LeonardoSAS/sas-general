@@ -9,6 +9,7 @@ export function extractTitleFromTheme(
   if (!match) {
     return "error: no <title> found";
   }
+  
   const titleText = match[1].toLowerCase();
 
   if (titleText.includes("shop")) {

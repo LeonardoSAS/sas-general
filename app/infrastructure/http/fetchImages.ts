@@ -7,7 +7,10 @@ export async function fetchImage(
   if (isBase64Image(imageUrl)) {
     const base64 = imageUrl.split(",")[1];
 
-    return Buffer.from(base64, "base64");
+    return Buffer.from(
+      base64, 
+      "base64"
+    );
   }
   const response = await fetch(
     imageUrl, { 

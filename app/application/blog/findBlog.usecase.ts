@@ -1,25 +1,18 @@
-import { adminFormDataType } from "app/type/general";
 import { getShopifyBlogs } from "app/infrastructure/shopify/helpers/blog/blogNameAvailable.adapter";
-import { BlogNodeType } from "app/type/seo/seoType";
-
-interface FindBlogParams extends adminFormDataType {
-  cachedBlogs?: BlogNodeType[];
-}
+import { FindBlogValue } from "app/type/interface/seo/interface";
 
 export async function findBlog({
   admin, 
   formData,
   cachedBlogs
-}: FindBlogParams) {
+}: FindBlogValue) {
   
   const handle = String(
     formData.get("blog_id")
   );
   
-  // Se blogs estão em cache, reutiliza
   let blogs = cachedBlogs;
   
-  // Fallback: busca blogs se não estiverem cacheados
   if (!blogs) {
     blogs = await getShopifyBlogs(admin);
   }

@@ -5,7 +5,6 @@ import { ProductController } from "app/adapters/controllers/product.controller";
 export const action = async ({ request }: ActionFunctionArgs) => {
 
   const { admin } = await authenticate.admin(request);
-  
   const result = await ProductController({
     admin,
     request

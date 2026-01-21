@@ -7,7 +7,9 @@ export async function fetchCsv(
 
   const contentType = request.headers.get("content-type");
   
-  if (!contentType || !contentType.includes("multipart/form-data")) {
+  if (!contentType || !contentType.includes(
+    "multipart/form-data"
+  )) {
     return { 
         success: false, 
         fileContent: ""
@@ -34,9 +36,11 @@ export async function fetchCsv(
             return;
         }
       
-        file.on("data", (chunk) => localChunks.push(chunk));
+        file.on("data", (chunk) => 
+          localChunks.push(chunk));
         file.on("end", () => {
-          fileContent = Buffer.concat(localChunks).toString("utf-8");
+          fileContent = Buffer.concat(
+            localChunks).toString("utf-8");
         });
       });
 
@@ -54,6 +58,7 @@ export async function fetchCsv(
         })
       );
     });
+    
     return { 
       success: fileContent.length > 0, 
       fileContent

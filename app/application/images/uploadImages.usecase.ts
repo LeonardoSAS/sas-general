@@ -10,7 +10,10 @@ export const uploadImages = async ({
   type
 }: processImageType): Promise<string> => {
   
-  const { html, imageUrls } = await fetchHtmlAndUrl({url, type}); 
+  const { html, imageUrls } = await fetchHtmlAndUrl({
+    url, 
+    type
+  }); 
   const uploadResults = await processImages({
     imageUrls, 
     admin, 

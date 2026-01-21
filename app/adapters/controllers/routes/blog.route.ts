@@ -9,7 +9,6 @@ import { createBlogController } from "../blog.controller";
 export async function loader({ request }: LoaderFunctionArgs){
 
   const { admin } = await authenticate.admin(request);
-  
   const [trueauthors, title, blogs] = await Promise.all([
     getShopifyAuthors(admin),
     getThemeTitleUseCase(admin),

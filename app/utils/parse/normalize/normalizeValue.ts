@@ -5,7 +5,6 @@ export function normalizeValue(
   let processedValue: string;
 
   try {
-    
     const parsedValue = JSON.parse(value);
 
     if (Array.isArray(parsedValue)) {
@@ -26,7 +25,6 @@ export function normalizeValue(
           p => p.trim()).filter(Boolean);
         processedValue = JSON.stringify(parts);
       } 
-      
       else {
         processedValue = trimmedParsed;
       }

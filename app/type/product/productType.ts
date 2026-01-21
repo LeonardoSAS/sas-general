@@ -7,10 +7,10 @@ export type productSkuType = {
   admin: AdminApiContext;
 }
 
-export interface ProductInfoType {
+export type ProductInfoType = {
   productId: string;
   variantId: string | null;
-}
+};
 
 export type ProductVariantEdgeType = {
   node: {
@@ -19,7 +19,7 @@ export type ProductVariantEdgeType = {
   };
 };
 
-export interface CSVProcessingResultType {
+export type CSVProcessingResultType = {
   data: MetafieldDataType[];
   errors: ProcessingErrorType[];
   summary: {
@@ -27,7 +27,7 @@ export interface CSVProcessingResultType {
     processedLines: number;
     linesWithErrors: number;
   };
-}
+};
 
 export type FetchCsvResultType = {
   success: boolean;
@@ -60,18 +60,18 @@ export type ActionResponseType = {
   results?: UpdateMetafieldsResultType[];
 };
 
-export interface CSVFileUploaderPropsType {
+export type CSVFileUploaderPropsType = {
   onSubmit: (file: File) => void;
   isProcessing: boolean;
-}
+};
 
-export interface ResultsDisplayPropsType {
+export type ResultsDisplayPropsType = {
   data: {
     success: boolean;
     message: string;
     results?: UpdateMetafieldsResultType[];
   } | null;
-}
+};
 
 export type parseHeaderMetadataType = {
   header: string;

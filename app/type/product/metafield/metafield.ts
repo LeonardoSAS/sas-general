@@ -1,15 +1,15 @@
 import { adminType, ProcessingErrorType, ShopifyUserErrorType } from "../../general";
 import { AdminApiContext } from "@shopify/shopify-app-react-router/server";
 
-export interface MetafieldType {
+export type MetafieldType = {
   namespace: string;
   key: string;
   value: string | string[];
   type: 'single_line_text_field' | 'multi_line_text_field' | 'number_integer' | 'number_decimal' | 'boolean' | 'date' | 'date_time' | 'json' | 'rating' | 'color' | 'weight' | 'volume' | 'dimension' | 'url' | 'file_reference' | 'product_reference' | 'variant_reference' | 'page_reference' | 'collection_reference' | 'customer_reference' | 'order_reference' | 'list.single_line_text_field';
   target: 'product' | 'variant';
-}
+};
 
-export interface MetafieldDataType {
+export type MetafieldDataType = {
   sku: string;
   metafields: MetafieldType[];
   warnings?: string[];
@@ -20,23 +20,23 @@ export interface MetafieldDataType {
     processedLines: number;
     linesWithErrors: number;
   };
-}
+};
 
-export interface ShopifyProductNodeType {
+export type ShopifyProductNodeType = {
   id: string;
   title: string;
   [key: string]: unknown;
-}
+};
 
-export interface ShopifyMetafieldType {
+export type ShopifyMetafieldType = {
   id: string;
   namespace: string;
   key: string;
   value: string;
   [key: string]: unknown;
-}
+};
 
-export interface UpdateMetafieldsResultType {
+export type UpdateMetafieldsResultType = {
   sku: string;
   success: boolean;
   errors?: ShopifyUserErrorType[];
@@ -59,7 +59,7 @@ export interface UpdateMetafieldsResultType {
       value: string;
     }>;
   };
-}
+};
 
 export const validTypes: MetafieldType['type'][] = [
   'single_line_text_field',

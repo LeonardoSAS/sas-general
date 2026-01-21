@@ -23,10 +23,6 @@ export type createBlogOrPageType = {
   session: Session;
 };
 
-export interface CreateBlogControllerType extends seoControllerType {
-  cachedBlogs?: BlogLoaderType[];
-}
-
 export type fetchHtmlAndUrlType = {
   url: string;
   type: string;
@@ -42,13 +38,13 @@ export type layoutCleanerType = {
     type: "page" | "blog";
 };
 
-export interface BlogLoaderType {
+export type BlogLoaderType = {
   id: string;
   handle: string;
   title: string;
-}
+};
 
-export interface CreateArticleResponseType {
+export type CreateArticleResponseType = {
   blog: ArticleGraphQlType & { metafields: Record<string, string> };
   idBlog: string;
   blogHandle: string;
@@ -57,16 +53,16 @@ export interface CreateArticleResponseType {
   shopUrl: string;
   shopName: string;
   userErrors: ShopifyUserErrorType[] | null;
-}
+};
 
-export interface metafieldSeoType {
+export type metafieldSeoType = {
   namespace: string;
   key: string;
   value: string;
   type: string;
-}
+};
 
-export interface ArticleInputType {
+export type ArticleInputType = {
   blogId: string;
   title: string;
   body: string;
@@ -78,16 +74,16 @@ export interface ArticleInputType {
   image: {
     url: string | null;
   };
-}
+};
 
-export interface ArticleMetafieldEdgeType {
+export type ArticleMetafieldEdgeType = {
   node: {
     key: string;
     value: string;
   };
-}
+};
 
-export interface ArticleGraphQlType {
+export type ArticleGraphQlType = {
   id: string;
   title: string;
   body: string;
@@ -101,23 +97,23 @@ export interface ArticleGraphQlType {
     edges: ArticleMetafieldEdgeType[];
   };
   [key: string]: unknown;
-}
+};
 
-export interface PageInputType {
+export type PageInputType = {
   title: string;
   body: string;
   isPublished: boolean;
   metafields: metafieldSeoType[];
-}
+};
 
-export interface PageMetafieldEdgeType {
+export type PageMetafieldEdgeType = {
   node: {
     key: string;
     value: string;
   };
-}
+};
 
-export interface PageGraphQlType {
+export type PageGraphQlType = {
   id: string;
   title: string;
   body: string;
@@ -125,15 +121,38 @@ export interface PageGraphQlType {
     edges: PageMetafieldEdgeType[];
   };
   [key: string]: unknown;
-}
+};
 
-export interface CreatePageResponseType {
+export type CreatePageResponseType = {
   page: PageGraphQlType & { metafields: Record<string, string> };
   idPage: string;
   status: string;
   shopUrl: string;
   shopName: string;
   userErrors: ShopifyUserErrorType[] | null;
-}
+};
+export type AuthorGraphQlType = {
+  author?: {
+    name: string;
+  };
+};
+
+export type GetAuthorsResponseType = {
+  data: {
+    articles: {
+      nodes: AuthorGraphQlType[];
+    };
+  };
+};
+
+export type GetBlogsResponseType = {
+  data: {
+    blogs: {
+      edges: {
+        node: BlogLoaderType;
+      }[];
+    };
+  };
+};
 
 export type FieldNameType = keyof ErrorsType;

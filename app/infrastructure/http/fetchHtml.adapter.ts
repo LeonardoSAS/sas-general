@@ -13,7 +13,8 @@ export async function fetchHtml(
       }
     );
     const html = await response.text();
-      return html;
+
+    return html;
   } 
   catch (error) {
     console.log(error);

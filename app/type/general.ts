@@ -10,17 +10,17 @@ export type ErrorsType = {
   url: string
 };
 
-export interface ProcessingErrorType {
+export type ProcessingErrorType = {
   sku: string;
   header?: string;
   message: string;
   line: number;
-}
+};
 
-export interface ShopifyUserErrorType {
+export type ShopifyUserErrorType = {
   field?: string[];
   message: string;
-}
+};
 
 export type datetimeType = {
   shopName: string;

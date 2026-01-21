@@ -115,7 +115,6 @@ export function parseHeaderMetadata({
   )) {
     return null;
   }
-
   if (!isPriceField) {
     if (!validate(
       !!namespace && !!key && key.length >= 2,
@@ -123,14 +122,12 @@ export function parseHeaderMetadata({
     )) {
       return null;
     }
-
     if (!validate(
       type !== null,
       `Invalid header: ${header}. Must include type in brackets (example: product.custom.color[single_line_text_field])`
     )) {
       return null;
     }
-
     if (!validate(
       validTypes.includes(type as MetafieldType['type']),
       `Invalid type: ${type}. Must be one of: ${validTypes.join(', ')}`

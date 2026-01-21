@@ -13,7 +13,6 @@ export async function processImages({
     async (oldUrl, index) => 
   {
     try {
-      
       const buffer = await fetchImage(oldUrl);
       const filename = `${datetimeShop({
         shopName, 

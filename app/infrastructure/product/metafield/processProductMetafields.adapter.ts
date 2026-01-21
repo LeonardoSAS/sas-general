@@ -15,7 +15,9 @@ export async function processProductMetafields({
     return;
   }
 
-  const metafieldInputs = mapMetafields(productMetafields);
+  const metafieldInputs = mapMetafields(
+    productMetafields
+  );
   const response = await admin.graphql(
     UPDATE_PRODUCT_MUTATION, {
       variables: {

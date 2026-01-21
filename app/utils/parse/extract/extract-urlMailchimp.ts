@@ -11,6 +11,7 @@ export function extractImageUrlsFromMailchimp(
     if (!url){
       return false;
     }
+    
     url = url.trim();
 
     if (url.startsWith("data:")){
